@@ -35,18 +35,64 @@ jobs:
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
           sudo apt-get update && sudo apt-get install -y lftp
-          lftp <<EOF
-          set ssl:verify-certificate no
-          set ssl:check-hostname no
-          set ftp:ssl-allow yes
-          set ftp:ssl-force false
-          set ftp:ssl-protect-data true
-          set net:timeout 60
-          set net:max-retries 5
-          set ftp:passive-mode true
-          open "$FTP_SERVER"
-          user "$FTP_USERNAME" "$FTP_PASSWORD"
-          mirror -a -R --verbose --parallel=5 ./out/ ./
-          put -O ./ ./out/.htaccess
-          quit
-          EOF
+
+          # 1. Validate GitHub Secrets existence
+          if [ -z "$FTP_SERVER" ]; then
+            echo "::error::GitHub Secret FTP_SERVER is missing or empty! Please configure it in Repository Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          if [ -z "$FTP_USERNAME" ]; then
+            echo "::error::GitHub Secret FTP_USERNAME is missing or empty! Please configure it in Repository Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          if [ -z "$FTP_PASSWORD" ]; then
+            echo "::error::GitHub Secret FTP_PASSWORD is missing or empty! Please configure it in Repository Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+
+          # 2. Clean any trailing carriage returns, whitespace, or protocol prefixes
+          SERVER=$(echo "$FTP_SERVER" | tr -d '\r\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's|^ftp[s]*://||')
+          USERNAME=$(echo "$FTP_USERNAME" | tr -d '\r\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+          PASSWORD=$(echo "$FTP_PASSWORD" | tr -d '\r\n')
+
+          echo "Target Server: $SERVER (length: ${#SERVER})"
+          echo "FTP Username: $USERNAME (length: ${#USERNAME})"
+          echo "FTP Password: [PROTECTED] (length: ${#PASSWORD} chars)"
+
+          echo "=== Executing Deployment (Attempt 1: Plain FTP - Hostinger Standard) ==="
+          if lftp -u "$USERNAME","$PASSWORD" "$SERVER" -e "
+            set debug 3;
+            set ssl:verify-certificate no;
+            set ftp:ssl-allow no;
+            set net:timeout 60;
+            set net:max-retries 3;
+            pwd;
+            mirror -a -R --verbose --parallel=3 ./out/ ./;
+            put -O ./ ./public/.htaccess;
+            quit;
+          "; then
+            echo "✓ Deployment finished successfully via Standard FTP!"
+            exit 0
+          fi
+
+          echo "=== Executing Deployment (Attempt 2: FTPS with TLS) ==="
+          if lftp -u "$USERNAME","$PASSWORD" "$SERVER" -e "
+            set debug 3;
+            set ssl:verify-certificate no;
+            set ssl:check-hostname no;
+            set ftp:ssl-allow yes;
+            set ftp:ssl-force true;
+            set ftp:ssl-protect-data true;
+            set net:timeout 60;
+            set net:max-retries 3;
+            pwd;
+            mirror -a -R --verbose --parallel=3 ./out/ ./;
+            put -O ./ ./public/.htaccess;
+            quit;
+          "; then
+            echo "✓ Deployment finished successfully via FTPS!"
+            exit 0
+          fi
+
+          echo "::error::Both FTP and FTPS connection attempts failed with 530 Login incorrect. Please verify FTP_SERVER, FTP_USERNAME, and FTP_PASSWORD in GitHub Secrets against Hostinger hPanel FTP Accounts."
+          exit 1
