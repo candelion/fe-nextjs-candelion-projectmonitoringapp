@@ -61,7 +61,7 @@ jobs:
 
           echo "=== Executing Deployment (Attempt 1: Plain FTP - Hostinger Standard) ==="
           if lftp -u "$USERNAME","$PASSWORD" "$SERVER" -e "
-            set debug 3;
+            debug 3;
             set ssl:verify-certificate no;
             set ftp:ssl-allow no;
             set net:timeout 60;
@@ -77,7 +77,7 @@ jobs:
 
           echo "=== Executing Deployment (Attempt 2: FTPS with TLS) ==="
           if lftp -u "$USERNAME","$PASSWORD" "$SERVER" -e "
-            set debug 3;
+            debug 3;
             set ssl:verify-certificate no;
             set ssl:check-hostname no;
             set ftp:ssl-allow yes;
