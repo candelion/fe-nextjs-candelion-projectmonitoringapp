@@ -63,6 +63,10 @@ export interface SubTaskItem {
   auditNotes?: string
   auditedBy?: string
   auditedAt?: string
+
+  // Project Controller Assignment
+  assignedPic?: string // PIC responsible for execution
+  assignedAuditor?: string // Auditor assigned to verify
 }
 
 export interface TaskPackageItem {
@@ -78,6 +82,28 @@ export interface TaskPackageItem {
   pointId?: string
   pointName?: string
   subTasks: SubTaskItem[]
+
+  // Controller Personnel Assignment & Budgeting
+  assignedPic?: string // e.g. 'Hendra Wijaya, S.T.'
+  assignedAuditor?: string // e.g. 'Budi Santoso, S.E., Ak., CA'
+  zoneCode?: string // e.g. 'ZONA B'
+  budget?: number // e.g. 165000000
+}
+
+export interface PolygonZoneItem {
+  id: string
+  code: string // e.g. 'ZONA A'
+  name: string // e.g. 'Zona A — Dermaga Utama Telocor'
+  color: string // e.g. '#10b981'
+  fillColor: string
+  fillOpacity: number
+  coordinates: [number, number][]
+  summary: string
+  assignedPic: string
+  assignedAuditor: string
+  progress: number
+  targetProgress: number
+  budget: number
 }
 
 export interface EvidencePhotoItem {

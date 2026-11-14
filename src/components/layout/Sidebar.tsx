@@ -207,16 +207,16 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
 
         {/* Role-specific bottom status card */}
         {currentRole === 'project_controller' && (
-          <div className="p-3 m-3 mt-0 rounded-2xl bg-slate-50 border border-slate-100 text-xs shrink-0">
-            <div className="flex items-center justify-between text-slate-500 text-[11px] mb-1">
-              <span>Status Kontrak</span>
-              <span className="text-emerald-600 font-semibold">Aktif</span>
+          <div className="p-3 m-3 mt-0 rounded-2xl bg-indigo-50/80 border border-indigo-100 text-xs shrink-0">
+            <div className="flex items-center justify-between text-indigo-900 text-[11px] mb-1 font-bold">
+              <span>Admin Pusat HQ</span>
+              <span className="text-indigo-600 font-extrabold">Full Control</span>
             </div>
-            <div className="font-bold text-slate-800 truncate text-[11px]">
+            <div className="font-black text-indigo-950 truncate text-[11px]">
               KTR-2026/CND/089
             </div>
-            <div className="text-[10px] text-slate-400 mt-1">
-              Tahun Anggaran 2026
+            <div className="text-[10px] text-indigo-700 mt-1">
+              Kendali PIC, Auditor & Poligon
             </div>
           </div>
         )}

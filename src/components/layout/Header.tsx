@@ -47,7 +47,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
     if (pathname.includes('/site-intelligence')) {
       return currentRole === 'auditor_head'
         ? 'Audit Geospasial & Perimeter Telocor'
-        : 'Site Intelligence & Peta'
+        : 'Site Intelligence: Pemetaan & Kotak Poligon'
     }
     if (pathname.includes('/laporan')) {
       return currentRole === 'auditor_head'
@@ -57,7 +57,7 @@ export default function Header({ onMenuToggle }: HeaderProps) {
     // Main dashboard view
     if (currentRole === 'pic_lapangan') return 'Tugas Harian Lapangan'
     if (currentRole === 'auditor_head') return 'Audit Kepatuhan & Evaluasi To-Do PIC'
-    return 'Dashboard & Integrasi RAB'
+    return 'Pusat Kendali Proyek & Integrasi RAB (Admin Pusat)'
   }
 
   // Filter notifications by role — PIC only sees site-level alerts

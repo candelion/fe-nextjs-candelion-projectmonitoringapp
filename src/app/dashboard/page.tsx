@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useRole } from '@/contexts/RoleContext'
 import HeroBanner from '@/components/dashboard/HeroBanner'
 import SummaryCards from '@/components/dashboard/SummaryCards'
+import CentralControllerAdminPanel from '@/components/dashboard/CentralControllerAdminPanel'
 import QuickSearchFilter from '@/components/dashboard/QuickSearchFilter'
 import ZoneGridCards from '@/components/dashboard/ZoneGridCards'
 import PicLapanganView from '@/components/dashboard/PicLapanganView'
@@ -33,7 +34,7 @@ export default function DashboardMainPage() {
     return <AuditorDashboardView />
   }
 
-  // ── Project Controller: full executive dashboard & RAB integration ────────
+  // ── Project Controller (Admin Pusat): full executive dashboard & orchestration
   const topAlert = WARNING_NOTIFICATIONS[0]
 
   return (
@@ -67,6 +68,9 @@ export default function DashboardMainPage() {
 
       {/* KPI Summary Cards for Project Controller */}
       <SummaryCards />
+
+      {/* ── Central Command HQ Panel: Assign PIC, Assign Auditor & Live Feed ── */}
+      <CentralControllerAdminPanel />
 
       {/* Search & Filter */}
       <QuickSearchFilter
@@ -111,7 +115,7 @@ export default function DashboardMainPage() {
               Site Intelligence & Peta
             </div>
             <div className="text-[11px] text-slate-400 mt-0.5">
-              Visual peta interaktif & pin status zona
+              Visual peta interaktif, kotak poligon & pin status zona
             </div>
           </div>
           <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-emerald-600 group-hover:translate-x-1 transition" />

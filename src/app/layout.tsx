@@ -18,6 +18,14 @@ export const metadata: Metadata = {
   description:
     'Sistem Pemantauan Terpadu Progres Fisik, Akuntabilitas PIC, dan Integrasi RAB Real-Time PT Candelion Digital.',
   keywords: ['project monitoring', 'pemantauan proyek', 'Candelion Digital', 'RAB', 'konstruksi', 'auditor'],
+  icons: {
+    icon: [
+      { url: '/logo/logo_candelion_white.png', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/logo/logo_candelion_white.png',
+    apple: '/logo/logo_candelion_white.png',
+  },
 }
 
 export const viewport: Viewport = {

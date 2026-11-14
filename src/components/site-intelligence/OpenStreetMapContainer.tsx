@@ -1,71 +1,12 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import 'leaflet/dist/leaflet.css'
-import { SitePointItem } from '@/types'
-
-// Telocor Sidoarjo Polygon definitions
-export const TELOCOR_POLYGONS = [
-  {
-    code: 'ZONA A',
-    name: 'Zona A — Dermaga Utama Telocor',
-    color: '#10b981', // Emerald
-    fillColor: '#10b981',
-    fillOpacity: 0.25,
-    coordinates: [
-      [-7.5518, 112.8442],
-      [-7.5518, 112.8464],
-      [-7.5532, 112.8466],
-      [-7.5535, 112.8445],
-    ] as [number, number][],
-    summary: 'Struktur pondasi cerucuk & tiang pancang dermaga Telocor Sidoarjo',
-  },
-  {
-    code: 'ZONA B',
-    name: 'Zona B — Jetty Wisata & Kali Porong',
-    color: '#6366f1', // Indigo
-    fillColor: '#6366f1',
-    fillOpacity: 0.25,
-    coordinates: [
-      [-7.5530, 112.8448],
-      [-7.5532, 112.8475],
-      [-7.5546, 112.8482],
-      [-7.5548, 112.8452],
-    ] as [number, number][],
-    summary: 'Konstruksi balok, kolom & plat lantai dermaga apung Telocor',
-  },
-  {
-    code: 'ZONA C',
-    name: 'Zona C — Tanggul Breakwater Muara',
-    color: '#06b6d4', // Cyan
-    fillColor: '#06b6d4',
-    fillOpacity: 0.25,
-    coordinates: [
-      [-7.5542, 112.8430],
-      [-7.5544, 112.8455],
-      [-7.5562, 112.8462],
-      [-7.5560, 112.8432],
-    ] as [number, number][],
-    summary: 'Pengaman abrasi pesisir & tanggul penahan sedimen muara Porong',
-  },
-  {
-    code: 'ZONA D',
-    name: 'Zona D — Area Fabrikasi & Akses Telocor',
-    color: '#8b5cf6', // Purple
-    fillColor: '#8b5cf6',
-    fillOpacity: 0.25,
-    coordinates: [
-      [-7.5505, 112.8415],
-      [-7.5510, 112.8440],
-      [-7.5525, 112.8438],
-      [-7.5522, 112.8412],
-    ] as [number, number][],
-    summary: 'Workshop fabrikasi tulangan baja & gudang logistik darat Telocor',
-  },
-]
+import { SitePointItem, PolygonZoneItem } from '@/types'
 
 interface OpenStreetMapContainerProps {
   sitePoints: SitePointItem[]
+  polygonZones?: PolygonZoneItem[]
   selectedPointId: string | null
   onSelectPoint: (point: SitePointItem) => void
   mapLayer: 'osm' | 'satellite'
@@ -73,6 +14,7 @@ interface OpenStreetMapContainerProps {
 
 export default function OpenStreetMapContainer({
   sitePoints,
+  polygonZones = [],
   selectedPointId,
   onSelectPoint,
   mapLayer,
@@ -119,28 +61,6 @@ export default function OpenStreetMapContainer({
 
       tileLayerRef.current = tileLayer
 
-      // ─── Draw Polygons over Telocor Sidoarjo ──────────────────────────────
-      TELOCOR_POLYGONS.forEach((poly) => {
-        const polygon = L.polygon(poly.coordinates, {
-          color: poly.color,
-          weight: 2,
-          opacity: 0.9,
-          fillColor: poly.fillColor,
-          fillOpacity: poly.fillOpacity,
-          dashArray: '6, 6',
-        }).addTo(map)
-
-        polygon.bindPopup(`
-          <div style="font-family: inherit; font-size: 12px; padding: 4px;">
-            <strong style="color: ${poly.color}; display: block; font-size: 13px;">${poly.name}</strong>
-            <p style="margin: 4px 0 0 0; color: #475569; font-size: 11px;">${poly.summary}</p>
-            <span style="display: inline-block; margin-top: 6px; font-weight: bold; font-size: 10px; color: #0284c7;">Lokasi: Telocor, Jabon, Sidoarjo</span>
-          </div>
-        `)
-
-        polygonsRef.current.push(polygon)
-      })
-
       // ─── Add Markers for Site Points ──────────────────────────────────────
       sitePoints.forEach((point) => {
         const isDone = point.status === 'completed'
@@ -182,7 +102,7 @@ export default function OpenStreetMapContainer({
         })
 
         marker.bindTooltip(
-          `<div style="font-weight: bold; font-size: 11px;">${point.code}: ${point.title}</div><div style="font-size: 10px; color: #64748b;">${point.targetDesc}</div>`,
+          `<div style="font-weight: bold; font-size: 11px;">${point.code}: ${point.title}</div><div style="font-size: 10px; color: #64748b;">${point.targetDesc}</div><div style="font-size: 9px; color: #0284c7; margin-top: 2px;">PIC: ${point.assignedPic}</div>`,
           { direction: 'top', offset: [0, -10] }
         )
 
@@ -198,6 +118,50 @@ export default function OpenStreetMapContainer({
       }
     }
   }, [])
+
+  // Draw & Redraw Polygon Zones when polygonZones changes
+  useEffect(() => {
+    if (!mapInstanceRef.current) return
+
+    import('leaflet').then((L) => {
+      if (!mapInstanceRef.current) return
+
+      // Clear existing polygons
+      polygonsRef.current.forEach((p) => {
+        mapInstanceRef.current.removeLayer(p)
+      })
+      polygonsRef.current = []
+
+      // Draw all polygon zones
+      polygonZones.forEach((poly) => {
+        const polygon = L.polygon(poly.coordinates, {
+          color: poly.color,
+          weight: 2.5,
+          opacity: 0.9,
+          fillColor: poly.fillColor || poly.color,
+          fillOpacity: poly.fillOpacity || 0.25,
+          dashArray: '6, 6',
+        }).addTo(mapInstanceRef.current)
+
+        polygon.bindPopup(`
+          <div style="font-family: inherit; font-size: 12px; padding: 6px; min-width: 200px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px;">
+              <span style="font-weight: 900; color: ${poly.color}; font-size: 12px; text-transform: uppercase;">${poly.code}</span>
+              <span style="font-weight: bold; font-size: 10px; background: #f1f5f9; padding: 2px 6px; border-radius: 6px;">Progres: ${poly.progress}%</span>
+            </div>
+            <strong style="color: #0f172a; display: block; font-size: 12px; line-height: 1.3;">${poly.name}</strong>
+            <p style="margin: 4px 0; color: #475569; font-size: 11px;">${poly.summary}</p>
+            <div style="margin-top: 6px; padding-top: 4px; border-top: 1px solid #e2e8f0; font-size: 10px; color: #334155;">
+              <div><strong>PIC:</strong> ${poly.assignedPic || 'Hendra Wijaya, S.T.'}</div>
+              <div><strong>Auditor:</strong> ${poly.assignedAuditor || 'Budi Santoso, S.E.'}</div>
+            </div>
+          </div>
+        `)
+
+        polygonsRef.current.push(polygon)
+      })
+    })
+  }, [polygonZones])
 
   // Switch Layer (OSM vs Satellite)
   useEffect(() => {
@@ -246,4 +210,3 @@ export default function OpenStreetMapContainer({
     </div>
   )
 }
-

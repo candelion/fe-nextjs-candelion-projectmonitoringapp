@@ -310,6 +310,117 @@ export default function AuditorDashboardView() {
         </div>
       </div>
 
+      {/* ── MATRIKS RELEVANSI: TO-DO PIC VS OBJEK AUDIT ─────────────────── */}
+      <div className="bg-gradient-to-br from-teal-950 via-slate-900 to-indigo-950 rounded-3xl p-5 sm:p-6 text-white shadow-md border border-teal-800/40 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-3">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-teal-500/20 border border-teal-400/30 flex items-center justify-center text-teal-300 shrink-0">
+              <FileCheck className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-teal-300 bg-teal-900/60 px-2 py-0.5 rounded-md border border-teal-500/30">
+                  Korelatif & Terintegrasi
+                </span>
+                <span className="text-xs text-slate-300">PIC: Hendra Wijaya, S.T. ⇄ Auditor Head</span>
+              </div>
+              <h3 className="text-sm sm:text-base font-black text-white mt-0.5">
+                Matriks Relevansi: To-Do yang Dikerjakan PIC vs Objek yang Diaudit
+              </h3>
+            </div>
+          </div>
+          <span className="text-[11px] text-teal-200/80 bg-white/5 px-3 py-1 rounded-xl border border-white/10 self-start sm:self-auto">
+            4 Paket Pekerjaan Telocor Terpantau
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+          {/* Paket 1: Kolom K4 */}
+          <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-400/50 transition space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[10px] font-black text-indigo-300 bg-indigo-500/20 px-2 py-0.5 rounded-md">
+                TLC-K4 (P-01)
+              </span>
+              <span className="text-[10px] text-emerald-300 font-bold">2 Sah • 1 Review</span>
+            </div>
+            <h4 className="font-bold text-white text-xs">Struktur Dermaga Utama</h4>
+            <div className="space-y-1.5 text-[11px] pt-1 border-t border-white/10">
+              <div>
+                <span className="text-slate-400 block text-[10px]">Dikerjakan PIC Hendra:</span>
+                <span className="text-slate-200 font-medium">Uji lot bekisting, pasang decking 40mm, foto pembesian LAP-01.</span>
+              </div>
+              <div>
+                <span className="text-teal-300 block text-[10px] font-bold">Yang Diaudit Auditor:</span>
+                <span className="text-teal-100 font-medium">Toleransi deviasi vertikal lot maks 3mm (SNI), selimut beton tahan sulfat.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Paket 2: Tanggul Muara Kali Porong */}
+          <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-400/50 transition space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[10px] font-black text-blue-300 bg-blue-500/20 px-2 py-0.5 rounded-md">
+                TLC-B2 (P-02)
+              </span>
+              <span className="text-[10px] text-amber-300 font-bold">1 Catatan Temuan</span>
+            </div>
+            <h4 className="font-bold text-white text-xs">Breakwater & Tanggul Muara</h4>
+            <div className="space-y-1.5 text-[11px] pt-1 border-t border-white/10">
+              <div>
+                <span className="text-slate-400 block text-[10px]">Dikerjakan PIC Hendra:</span>
+                <span className="text-slate-200 font-medium">Pasang geotextile 250gsm, foto tetrapod, hitung opname kubikasi.</span>
+              </div>
+              <div>
+                <span className="text-amber-300 block text-[10px] font-bold">Yang Diaudit Auditor:</span>
+                <span className="text-amber-100 font-medium">Batas overlap lembaran geotextile min 50cm (Catatan Temuan Aktif).</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Paket 3: K3 Pesisir */}
+          <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-400/50 transition space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[10px] font-black text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-md">
+                K3-TLC (P-04)
+              </span>
+              <span className="text-[10px] text-emerald-300 font-bold">✓ 100% Sah</span>
+            </div>
+            <h4 className="font-bold text-white text-xs">Inspeksi K3 & Keselamatan</h4>
+            <div className="space-y-1.5 text-[11px] pt-1 border-t border-white/10">
+              <div>
+                <span className="text-slate-400 block text-[10px]">Dikerjakan PIC Hendra:</span>
+                <span className="text-slate-200 font-medium">Periksa 18 APD & life vest, pasang rambu elevasi pasang surut air.</span>
+              </div>
+              <div>
+                <span className="text-emerald-300 block text-[10px] font-bold">Yang Diaudit Auditor:</span>
+                <span className="text-emerald-100 font-medium">Kepatuhan zero-accident pesisir, SOP pelampung darurat dermaga apung.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Paket 4: Logistik */}
+          <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 hover:border-teal-400/50 transition space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[10px] font-black text-teal-300 bg-teal-500/20 px-2 py-0.5 rounded-md">
+                LOG-TLC (P-03)
+              </span>
+              <span className="text-[10px] text-emerald-300 font-bold">✓ 100% Sah</span>
+            </div>
+            <h4 className="font-bold text-white text-xs">Logistik & Material Pesisir</h4>
+            <div className="space-y-1.5 text-[11px] pt-1 border-t border-white/10">
+              <div>
+                <span className="text-slate-400 block text-[10px]">Dikerjakan PIC Hendra:</span>
+                <span className="text-slate-200 font-medium">Verifikasi semen tahan asin, foto terpal pelindung besi, cek surat jalan.</span>
+              </div>
+              <div>
+                <span className="text-teal-300 block text-[10px] font-bold">Yang Diaudit Auditor:</span>
+                <span className="text-teal-100 font-medium">Standar penyimpanan bebas uap garam (palet 20cm), rekonsiliasi DO vs fisik.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* ── Search & Audit Filter Controls ─────────────────────────────── */}
       <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs p-4 sm:p-5">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">

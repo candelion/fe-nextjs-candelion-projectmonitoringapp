@@ -7,7 +7,145 @@ import {
   TaskPackageItem,
   SitePointItem,
   EvidencePhotoItem,
+  PolygonZoneItem,
 } from '@/types'
+
+// ─── Available Personnel for Project Controller Assignment ───────────────────
+export const AVAILABLE_PICS = [
+  { name: 'Hendra Wijaya, S.T.', role: 'PIC Lapangan — Dermaga & Struktur Utama', zone: 'Zona A & B' },
+  { name: 'Dian Nugraha, S.T.', role: 'PIC Lapangan — Breakwater & Geoteknik', zone: 'Zona C' },
+  { name: 'Rudi Hermawan', role: 'PIC Lapangan — Logistik, Fabrikasi & Baja', zone: 'Zona D' },
+  { name: 'Ahmad Fauzi, S.T.', role: 'PIC Lapangan — Mekanikal & Elektrikal Pesisir', zone: 'Cadangan' },
+]
+
+export const AVAILABLE_AUDITORS = [
+  { name: 'Budi Santoso, S.E., Ak., CA', role: 'Auditor Head — Audit Kepatuhan & Mutu', code: 'AUD-01' },
+  { name: 'Siti Aminah, S.E., M.Ak.', role: 'Auditor Senior — Forensik Anggaran & Opname', code: 'AUD-02' },
+]
+
+// ─── Preset Polygon Locations for Quick Drawing in Telocor ──────────────────
+export const PRESET_POLYGON_LOCATIONS = [
+  {
+    name: 'Zona E — Dermaga Sandar Kapal Pesisir',
+    code: 'ZONA E',
+    coordinates: [
+      [-7.5534, 112.8478],
+      [-7.5535, 112.8498],
+      [-7.5548, 112.8500],
+      [-7.5547, 112.8480],
+    ] as [number, number][],
+    summary: 'Area sandar kapal wisata bahari & perahu nelayan muara Kali Porong Telocor',
+    defaultColor: '#f59e0b',
+  },
+  {
+    name: 'Zona F — Kolam Retensi & Saluran Pengelak Muara',
+    code: 'ZONA F',
+    coordinates: [
+      [-7.5550, 112.8420],
+      [-7.5552, 112.8442],
+      [-7.5568, 112.8440],
+      [-7.5565, 112.8418],
+    ] as [number, number][],
+    summary: 'Kolam tampung pasang surut air muara dan proteksi sedimentasi pesisir Telocor',
+    defaultColor: '#ec4899',
+  },
+  {
+    name: 'Zona G — Workshop Perakitan Precast Tahap II',
+    code: 'ZONA G',
+    coordinates: [
+      [-7.5498, 112.8425],
+      [-7.5502, 112.8448],
+      [-7.5514, 112.8445],
+      [-7.5510, 112.8422],
+    ] as [number, number][],
+    summary: 'Area fabrikasi balok pracetak beton dan tetrapod muara Porong',
+    defaultColor: '#14b8a6',
+  },
+]
+
+// ─── Initial Polygons over Telocor Sidoarjo ──────────────────────────────────
+export const INITIAL_POLYGON_ZONES: PolygonZoneItem[] = [
+  {
+    id: 'poly_zona_a',
+    code: 'ZONA A',
+    name: 'Zona A — Dermaga Utama Telocor',
+    color: '#10b981', // Emerald
+    fillColor: '#10b981',
+    fillOpacity: 0.25,
+    coordinates: [
+      [-7.5518, 112.8442],
+      [-7.5518, 112.8464],
+      [-7.5532, 112.8466],
+      [-7.5535, 112.8445],
+    ],
+    summary: 'Struktur pondasi cerucuk & tiang pancang dermaga Telocor Sidoarjo',
+    assignedPic: 'Hendra Wijaya, S.T.',
+    assignedAuditor: 'Budi Santoso, S.E., Ak., CA',
+    progress: 88,
+    targetProgress: 85,
+    budget: 145000000,
+  },
+  {
+    id: 'poly_zona_b',
+    code: 'ZONA B',
+    name: 'Zona B — Jetty Wisata & Kali Porong',
+    color: '#6366f1', // Indigo
+    fillColor: '#6366f1',
+    fillOpacity: 0.25,
+    coordinates: [
+      [-7.5530, 112.8448],
+      [-7.5532, 112.8475],
+      [-7.5546, 112.8482],
+      [-7.5548, 112.8452],
+    ],
+    summary: 'Konstruksi balok, kolom & plat lantai dermaga apung Telocor',
+    assignedPic: 'Hendra Wijaya, S.T.',
+    assignedAuditor: 'Budi Santoso, S.E., Ak., CA',
+    progress: 75,
+    targetProgress: 72,
+    budget: 165000000,
+  },
+  {
+    id: 'poly_zona_c',
+    code: 'ZONA C',
+    name: 'Zona C — Tanggul Breakwater Muara',
+    color: '#06b6d4', // Cyan
+    fillColor: '#06b6d4',
+    fillOpacity: 0.25,
+    coordinates: [
+      [-7.5542, 112.8430],
+      [-7.5544, 112.8455],
+      [-7.5562, 112.8462],
+      [-7.5560, 112.8432],
+    ],
+    summary: 'Pengaman abrasi pesisir & tanggul penahan sedimen muara Porong',
+    assignedPic: 'Dian Nugraha, S.T.',
+    assignedAuditor: 'Budi Santoso, S.E., Ak., CA',
+    progress: 62,
+    targetProgress: 60,
+    budget: 85000000,
+  },
+  {
+    id: 'poly_zona_d',
+    code: 'ZONA D',
+    name: 'Zona D — Area Fabrikasi & Akses Telocor',
+    color: '#8b5cf6', // Purple
+    fillColor: '#8b5cf6',
+    fillOpacity: 0.25,
+    coordinates: [
+      [-7.5505, 112.8415],
+      [-7.5510, 112.8440],
+      [-7.5525, 112.8438],
+      [-7.5522, 112.8412],
+    ],
+    summary: 'Workshop fabrikasi tulangan baja & gudang logistik darat Telocor',
+    assignedPic: 'Rudi Hermawan',
+    assignedAuditor: 'Budi Santoso, S.E., Ak., CA',
+    progress: 100,
+    targetProgress: 100,
+    budget: 55000000,
+  },
+]
 
 export const USER_PROFILES: Record<string, UserProfile> = {
   project_controller: {
@@ -293,6 +431,10 @@ export const INITIAL_TASK_PACKAGES: TaskPackageItem[] = [
     color: 'bg-indigo-600 text-white',
     pointId: 'P-01',
     pointName: 'Titik P-01: Dermaga Utama Telocor Sidoarjo',
+    assignedPic: 'Hendra Wijaya, S.T.',
+    assignedAuditor: 'Budi Santoso, S.E., Ak., CA',
+    zoneCode: 'ZONA B',
+    budget: 165000000,
     subTasks: [
       {
         id: 'sub_k4_1',
@@ -383,6 +525,10 @@ export const INITIAL_TASK_PACKAGES: TaskPackageItem[] = [
     color: 'bg-blue-600 text-white',
     pointId: 'P-02',
     pointName: 'Titik P-02: Tanggul Sayap & Breakwater Muara',
+    assignedPic: 'Dian Nugraha, S.T.',
+    assignedAuditor: 'Budi Santoso, S.E., Ak., CA',
+    zoneCode: 'ZONA C',
+    budget: 85000000,
     subTasks: [
       {
         id: 'sub_b2_1',
@@ -446,6 +592,10 @@ export const INITIAL_TASK_PACKAGES: TaskPackageItem[] = [
     color: 'bg-emerald-600 text-white',
     pointId: 'P-04',
     pointName: 'Titik P-04: Pos K3 & Gerbang Dermaga Telocor',
+    assignedPic: 'Hendra Wijaya, S.T.',
+    assignedAuditor: 'Budi Santoso, S.E., Ak., CA',
+    zoneCode: 'ZONA B',
+    budget: 45000000,
     subTasks: [
       {
         id: 'sub_k3_1',
@@ -525,6 +675,10 @@ export const INITIAL_TASK_PACKAGES: TaskPackageItem[] = [
     color: 'bg-teal-600 text-white',
     pointId: 'P-03',
     pointName: 'Titik P-03: Area Fabrikasi & Gudang Material',
+    assignedPic: 'Rudi Hermawan',
+    assignedAuditor: 'Budi Santoso, S.E., Ak., CA',
+    zoneCode: 'ZONA D',
+    budget: 55000000,
     subTasks: [
       {
         id: 'sub_log_1',
