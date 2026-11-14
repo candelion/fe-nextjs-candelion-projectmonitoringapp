@@ -1,0 +1,38 @@
+name: Build & Deploy Next.js to Hostinger
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-fe-nextjs-hostinger
+      cancel-in-progress: true
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build Next.js
+        run: npm run build
+        env:
+          NEXT_PUBLIC_API_URL: https://hiwayapi.com/api
+
+      - name: Deploy Out to Hostinger
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          sudo apt-get update && sudo apt-get install -y lftp
+          lftp -e "set ssl:verify-certificate no; set ftp:ssl-allow no; set net:timeout 60; set net:max-retries 5; mirror -a -R --verbose --parallel=5 ./out/ ./; put -O ./ ./out/.htaccess; quit" -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER"
