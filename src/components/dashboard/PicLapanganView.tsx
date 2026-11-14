@@ -126,14 +126,14 @@ export default function PicLapanganView() {
       )}
 
       {/* ── Top Hero Banner (Inspired by IMG_4852 "Pengujian Substantif") ── */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-800 via-teal-700 to-emerald-600 p-6 sm:p-8 text-white shadow-lg shadow-emerald-900/15">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-800 via-teal-700 to-emerald-600 p-5 sm:p-7 text-white shadow-lg shadow-emerald-900/15">
         <div className="absolute -top-12 -right-12 w-64 h-64 rounded-full bg-white/10 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-10 left-20 w-48 h-48 rounded-full bg-emerald-400/20 blur-2xl pointer-events-none" />
 
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="flex items-start gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-white/15 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 shadow-inner">
-              <HardHat className="w-8 h-8 text-emerald-200" />
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
+          <div className="flex items-start gap-3.5 sm:gap-4">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/15 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 shadow-inner">
+              <HardHat className="w-7 h-7 sm:w-8 sm:h-8 text-emerald-200" />
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-1.5">
@@ -151,11 +151,11 @@ export default function PicLapanganView() {
           </div>
 
           {/* Quick Zone Info Pill */}
-          <div className="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/15 text-xs font-semibold">
+          <div className="flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-end gap-2 shrink-0 w-full lg:w-auto">
+            <div className="flex items-center justify-center sm:justify-start gap-2 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/15 text-xs font-semibold">
               <span>☀️ Cerah 32°C — 18 Mandor Aktif</span>
             </div>
-            <div className="flex items-center gap-2 bg-emerald-950/40 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-emerald-400/30 text-xs font-semibold text-emerald-200">
+            <div className="flex items-center justify-center sm:justify-start gap-2 bg-emerald-950/40 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-emerald-400/30 text-xs font-semibold text-emerald-200">
               <MapPin className="w-3.5 h-3.5 text-emerald-300" />
               <span>Area Pengawasan: Zona B (Kolom Lt. 2)</span>
             </div>
@@ -168,7 +168,8 @@ export default function PicLapanganView() {
             <span className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-300" />
               <span>
-                Total Akumulasi Sub-Tugas: {completedSubTasks} dari {totalSubTasks} tahapan selesai
+                <span className="hidden sm:inline">Total Akumulasi Sub-Tugas: </span>
+                <span>{completedSubTasks} dari {totalSubTasks} tahapan selesai</span>
               </span>
             </span>
             <span className="text-sm font-black text-emerald-200">{overallProgressPct}%</span>
@@ -547,7 +548,7 @@ export default function PicLapanganView() {
                       </div>
 
                       {/* Right: Actions & Requirement 4 (Lihat Titik di Peta) */}
-                      <div className="flex flex-wrap items-center gap-2 shrink-0 self-end md:self-center">
+                      <div className="flex flex-wrap items-center gap-2 shrink-0 w-full md:w-auto justify-end pt-2 md:pt-0 border-t md:border-t-0 border-slate-200/60">
                         {/* ── REQUIREMENT 4: Redirect to Site Intelligence for tasks with coordinates ── */}
                         {subTask.hasCoordinates && subTask.pointId && (
                           <button

@@ -216,9 +216,9 @@ export default function CameraViewfinder({ onPhotoSaved }: CameraViewfinderProps
       </div>
 
       {/* Footer Notes */}
-      <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-400">
-        <span>Tekan tombol shutter untuk mengambil foto & menautkannya ke sub-tugas To-Do</span>
-        <span className="text-emerald-400 font-semibold shrink-0">Status Sensor: GPS RTK Aktif</span>
+      <div className="mt-4 flex items-center justify-between gap-2 text-xs text-slate-400">
+        <span>Kamera Geotagging Lapangan</span>
+        <span className="text-emerald-400 font-semibold shrink-0">GPS RTK Aktif</span>
       </div>
 
       {/* ── MODAL: INPUT PENGAITAN SUB-TUGAS & LAPORAN (REQUIREMENT 2) ── */}
@@ -234,9 +234,6 @@ export default function CameraViewfinder({ onPhotoSaved }: CameraViewfinderProps
                   <h3 className="font-bold text-sm text-slate-900">
                     Kaitkan Foto dengan Sub-Tugas To-Do
                   </h3>
-                  <span className="text-[11px] text-slate-400">
-                    Foto akan otomatis mengesahkan sub-tugas terkait di To-Do & peta
-                  </span>
                 </div>
               </div>
               <button

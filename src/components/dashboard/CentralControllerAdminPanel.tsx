@@ -205,14 +205,14 @@ export default function CentralControllerAdminPanel() {
       )}
 
       {/* ── 1. CENTRAL COMMAND HQ HERO BANNER ─────────────────────────────── */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-indigo-900 p-6 sm:p-8 text-white shadow-xl">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-indigo-900 p-5 sm:p-7 text-white shadow-xl">
         <div className="absolute -top-12 -right-12 w-72 h-72 rounded-full bg-indigo-500/10 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-10 left-20 w-48 h-48 rounded-full bg-teal-500/15 blur-2xl pointer-events-none" />
 
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="flex items-start gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 shadow-inner">
-              <Building className="w-7 h-7 text-indigo-300" />
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
+          <div className="flex items-start gap-3.5 sm:gap-4">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 shadow-inner">
+              <Building className="w-6 h-6 sm:w-7 sm:h-7 text-indigo-300" />
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-1.5">
@@ -230,11 +230,11 @@ export default function CentralControllerAdminPanel() {
           </div>
 
           {/* Quick Central Actions */}
-          <div className="flex flex-wrap lg:flex-col items-start lg:items-end gap-2.5 shrink-0">
+          <div className="flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-end gap-2.5 shrink-0 w-full lg:w-auto">
             <button
               type="button"
               onClick={() => setIsCreatePackageOpen(true)}
-              className="px-4 py-2.5 rounded-2xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold shadow-md flex items-center gap-2 transition cursor-pointer"
+              className="w-full sm:w-auto px-4 py-2.5 rounded-2xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold shadow-md flex items-center justify-center gap-2 transition cursor-pointer"
             >
               <Plus className="w-4 h-4" />
               <span>+ Buat Paket Tugas & Assign PIC</span>
@@ -242,7 +242,7 @@ export default function CentralControllerAdminPanel() {
 
             <Link
               href="/dashboard/site-intelligence"
-              className="px-4 py-2 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-md flex items-center gap-1.5 transition"
+              className="w-full sm:w-auto px-4 py-2 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-semibold backdrop-blur-md flex items-center justify-center gap-1.5 transition"
             >
               <Compass className="w-3.5 h-3.5 text-teal-300" />
               <span>Buka Site Intelligence & Buat Poligon ↗</span>
@@ -341,8 +341,76 @@ export default function CentralControllerAdminPanel() {
           </div>
         </div>
 
-        {/* Task Assignment Table */}
-        <div className="overflow-x-auto">
+        {/* Mobile View: Clean Card Layout for Phones */}
+        <div className="block md:hidden space-y-3">
+          {filteredPackages.map((pkg) => (
+            <div
+              key={pkg.id}
+              className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 space-y-3"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span className="font-mono font-bold text-[10px] px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-200">
+                      {pkg.code}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleGoToMapPoint(pkg.pointId)}
+                      className="font-bold text-teal-700 flex items-center gap-1 text-[11px]"
+                    >
+                      <MapPin className="w-3 h-3 text-teal-600" />
+                      <span>{pkg.pointId || 'P-01'}</span>
+                      <span className="text-[10px] text-slate-400">({pkg.zoneCode || 'ZONA B'})</span>
+                    </button>
+                  </div>
+                  <h4 className="font-bold text-sm text-slate-900 leading-snug">{pkg.title}</h4>
+                </div>
+                <span className="font-bold text-xs text-indigo-600 bg-white px-2.5 py-1 rounded-xl border border-slate-200 shrink-0">
+                  {pkg.progress}%
+                </span>
+              </div>
+
+              {/* Progress Bar */}
+              <div className="w-full h-1.5 rounded-full bg-slate-200 overflow-hidden">
+                <div
+                  className={`h-full rounded-full ${
+                    pkg.progress === 100 ? 'bg-emerald-500' : 'bg-indigo-600'
+                  }`}
+                  style={{ width: `${pkg.progress}%` }}
+                />
+              </div>
+
+              {/* Personel Assignment */}
+              <div className="grid grid-cols-2 gap-2 text-xs pt-1 border-t border-slate-200/60">
+                <div>
+                  <span className="text-[10px] text-slate-400 block font-medium">PIC Pelaksana:</span>
+                  <span className="font-bold text-slate-800 text-[11px] truncate block">
+                    {pkg.assignedPic || 'Hendra Wijaya, S.T.'}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-[10px] text-slate-400 block font-medium">Auditor Penilai:</span>
+                  <span className="font-bold text-teal-800 text-[11px] truncate block">
+                    {pkg.assignedAuditor || 'Budi Santoso, S.E.'}
+                  </span>
+                </div>
+              </div>
+
+              {/* Action */}
+              <button
+                type="button"
+                onClick={() => handleOpenReassign(pkg)}
+                className="w-full py-2 rounded-xl bg-white hover:bg-indigo-50 text-indigo-700 border border-slate-200 hover:border-indigo-200 font-bold text-xs transition cursor-pointer text-center shadow-2xs"
+              >
+                Ganti Personel
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Tablet & Desktop View: Structured Dense Table */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left text-xs text-slate-700">
             <thead className="bg-slate-50/80 text-[11px] text-slate-400 uppercase font-black border-y border-slate-200">
               <tr>

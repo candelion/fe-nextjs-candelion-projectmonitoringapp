@@ -46,9 +46,6 @@ export default function BeforeAfterSlider({
             <Sliders className="w-4 h-4 text-indigo-600" />
             Komparasi Interaktif Before / After Proyek
           </h3>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Geser pemisah horizontal untuk memvalidasi deviasi fisik lapangan
-          </p>
         </div>
         <span className="text-[11px] font-semibold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full border border-indigo-100 flex items-center gap-1">
           <Eye className="w-3.5 h-3.5" /> Posisi: {Math.round(sliderPosition)}%
@@ -63,7 +60,7 @@ export default function BeforeAfterSlider({
         onMouseLeave={() => setIsDragging(false)}
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
-        className="relative w-full h-[360px] sm:h-[420px] rounded-2xl overflow-hidden cursor-ew-resize select-none border border-slate-200/80 bg-slate-900 shadow-inner"
+        className="relative w-full h-[280px] sm:h-[380px] md:h-[420px] rounded-2xl overflow-hidden cursor-ew-resize select-none border border-slate-200/80 bg-slate-900 shadow-inner"
       >
         {/* After Image (Background) */}
         <img

@@ -75,13 +75,13 @@ export default function LoginPage() {
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             Sistem Pemantauan Terpadu
           </h1>
-          <p className="text-sm text-slate-500 mt-1">
-            Monitoring Progres Fisik, Akuntabilitas PIC, & Pengawasan Audit Proyek
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            Sistem Monitoring Proyek & Pengawasan Audit
           </p>
         </div>
 
         {/* Main Login Glass Card */}
-        <div className="bg-white/90 backdrop-blur-xl rounded-3xl border border-white/80 shadow-xl shadow-slate-200/50 p-6 sm:p-8">
+        <div className="bg-white/90 backdrop-blur-xl rounded-3xl border border-white/80 shadow-xl shadow-slate-200/50 p-5 sm:p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Role Selection Segmented Section */}
             <div>
@@ -132,10 +132,10 @@ export default function LoginPage() {
               </div>
 
               {/* Active Role Info Pill */}
-              <div className="mt-3 p-3 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between text-xs text-slate-600">
+              <div className="mt-3 p-3 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-xs text-slate-600">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                  <span>Akses Terpilih: <strong>{activeProfile?.roleTitle}</strong> ({activeProfile?.name})</span>
+                  <span>Akses: <strong>{activeProfile?.roleTitle}</strong> ({activeProfile?.name})</span>
                 </div>
                 <span className="text-[11px] text-indigo-600 font-semibold">
                   {activeProfile?.permissions[0]}

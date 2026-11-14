@@ -319,7 +319,7 @@ export default function GeospatialMapMock() {
 
           {/* OVERLAY DRAWER: Detail Titik, Tugas & Foto Terkait */}
           {activePoint && (
-            <div className="absolute top-4 right-4 z-400 w-80 sm:w-96 max-h-[92%] bg-white/95 backdrop-blur-md rounded-3xl p-4 sm:p-5 shadow-2xl border border-slate-200/90 overflow-y-auto space-y-3.5">
+            <div className="absolute top-2 sm:top-4 right-2 sm:right-4 left-2 sm:left-auto z-400 w-auto sm:w-96 max-h-[90%] bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-2xl border border-slate-200/90 overflow-y-auto space-y-3.5">
               {/* Drawer Header */}
               <div className="flex items-start justify-between gap-2 border-b pb-2.5 border-slate-100">
                 <div>
@@ -525,11 +525,8 @@ export default function GeospatialMapMock() {
                   Admin Pusat • Site Intelligence Telocor
                 </span>
                 <h3 className="font-black text-lg text-slate-900 mt-0.5">
-                  Buat Kotak Poligon Zona Lokasi Baru 🗺️
+                  Buat Kotak Poligon Zona Baru 🗺️
                 </h3>
-                <p className="text-xs text-slate-500">
-                  Tentukan batas poligon geospasial di Telocor Sidoarjo dan tetapkan PIC & Auditor yang bertanggung jawab.
-                </p>
               </div>
               <button
                 type="button"

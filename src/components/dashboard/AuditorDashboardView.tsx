@@ -167,14 +167,14 @@ export default function AuditorDashboardView() {
       )}
 
       {/* ── Auditor Hero Banner ────────────────────────────────────────── */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-teal-900 via-teal-800 to-indigo-900 p-6 sm:p-8 text-white shadow-lg shadow-teal-950/20">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-teal-900 via-teal-800 to-indigo-900 p-5 sm:p-7 text-white shadow-lg shadow-teal-950/20">
         <div className="absolute -top-12 -right-12 w-64 h-64 rounded-full bg-teal-400/10 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-10 left-20 w-48 h-48 rounded-full bg-indigo-500/15 blur-2xl pointer-events-none" />
 
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="flex items-start gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-white/15 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 shadow-inner">
-              <ShieldCheck className="w-8 h-8 text-teal-200" />
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
+          <div className="flex items-start gap-3.5 sm:gap-4">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/15 border border-white/20 backdrop-blur-md flex items-center justify-center shrink-0 shadow-inner">
+              <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8 text-teal-200" />
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-1.5">
@@ -192,12 +192,12 @@ export default function AuditorDashboardView() {
           </div>
 
           {/* Auditor Profile Pill */}
-          <div className="flex flex-wrap lg:flex-col items-start lg:items-end gap-2 shrink-0">
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/15 text-xs font-semibold">
+          <div className="flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-end gap-2 shrink-0 w-full lg:w-auto">
+            <div className="flex items-center justify-center sm:justify-start gap-2 bg-white/10 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-white/15 text-xs font-semibold">
               <Award className="w-4 h-4 text-teal-300" />
               <span>Auditor Head: {currentUser.name}</span>
             </div>
-            <div className="flex items-center gap-2 bg-teal-950/60 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-teal-400/30 text-xs font-semibold text-teal-200">
+            <div className="flex items-center justify-center sm:justify-start gap-2 bg-teal-950/60 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-teal-400/30 text-xs font-semibold text-teal-200">
               <MapPin className="w-3.5 h-3.5 text-teal-300" />
               <span>Telocor Sidoarjo — Kontrak KTR-2026/CND/089</span>
             </div>
@@ -210,7 +210,8 @@ export default function AuditorDashboardView() {
             <span className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-teal-300" />
               <span>
-                Status Kepatuhan: {stats.verifiedCount} dari {stats.completedByPic} sub-tugas PIC terverifikasi sah ({stats.pendingAuditCount} menunggu review, {stats.flaggedCount} catatan temuan)
+                <span className="hidden sm:inline">Status Kepatuhan: </span>
+                <span>{stats.verifiedCount} dari {stats.completedByPic} sub-tugas PIC sah ({stats.pendingAuditCount} review, {stats.flaggedCount} temuan)</span>
               </span>
             </span>
             <span className="text-sm font-black text-teal-200">{stats.compliancePct}% Lolos Audit</span>
@@ -692,7 +693,7 @@ export default function AuditorDashboardView() {
                           </div>
 
                           {/* Right: Audit Status Badge & Audit Action Button */}
-                          <div className="flex items-center gap-3 shrink-0 self-start lg:self-center">
+                          <div className="flex flex-wrap items-center gap-2.5 shrink-0 w-full lg:w-auto justify-between lg:justify-start pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-100">
                             {/* Current Status Badge */}
                             {isVerified && (
                               <span className="px-3 py-1.5 rounded-2xl bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs font-bold flex items-center gap-1.5 shadow-2xs">
