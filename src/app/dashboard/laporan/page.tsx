@@ -9,7 +9,7 @@ import { FileSpreadsheet, ShieldAlert, ArrowLeft, ClipboardList } from 'lucide-r
 export default function ReportingDashboardPage() {
   const { currentRole } = useRole()
 
-  // Guard for PIC Lapangan: they should not see or extract executive RAB reports
+  // Guard for PIC Lapangan: they should not access executive reporting & audit consolidation
   if (currentRole === 'pic_lapangan') {
     return (
       <div className="max-w-2xl mx-auto py-12 text-center space-y-4">
@@ -20,7 +20,7 @@ export default function ReportingDashboardPage() {
           Akses Terbatas — Modul Khusus Eksekutif & Auditor
         </h2>
         <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
-          Modul Otomasi Pembuatan Laporan & Ekstraksi RAB hanya dapat diakses oleh <strong>Project Controller</strong> dan <strong>Auditor Head</strong>. Sebagai PIC Lapangan, fokus Anda adalah penyelesaian checklist fisik di lapangan.
+          Modul Otomasi Rekapitulasi Laporan & Verifikasi hanya dapat diakses oleh <strong>Project Controller</strong> dan <strong>Auditor Head</strong>. Sebagai PIC Lapangan, fokus Anda adalah penyelesaian checklist fisik di lapangan.
         </p>
         <div className="pt-2">
           <Link
@@ -53,12 +53,12 @@ export default function ReportingDashboardPage() {
           <h1 className="text-2xl font-black text-slate-900 tracking-tight mt-1">
             {isAuditor
               ? 'Kertas Kerja Audit, Berita Acara (BAP) & LHE'
-              : 'Otomasi Pembuatan Laporan & Integrasi RAB'}
+              : 'Otomasi Rekapitulasi Laporan PIC & Verifikasi Auditor'}
           </h1>
           <p className="text-xs text-slate-500 mt-0.5">
             {isAuditor
               ? 'Ekstraksi komprehensif audit trail to-do PIC, pengesahan opname fisik, dan Laporan Hasil Evaluasi (LHE) kepatuhan Proyek Telocor Sidoarjo.'
-              : 'Ekstraksi komprehensif data anggaran, penerbitan BAP fisik, dan laporan audit mingguan berstandar enterprise.'}
+              : 'Kompilasi otomatis rekaman pekerjaan To-Do PIC Lapangan, log bukti foto geotagging, dan catatan pengesahan Auditor Head ke dalam format laporan siap cetak & spreadsheet.'}
           </p>
         </div>
       </div>

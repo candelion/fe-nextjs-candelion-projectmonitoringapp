@@ -16,8 +16,8 @@ export const metadata: Metadata = {
     template: '%s | Candelion Digital',
   },
   description:
-    'Sistem Pemantauan Terpadu Progres Fisik, Akuntabilitas PIC, dan Integrasi RAB Real-Time PT Candelion Digital.',
-  keywords: ['project monitoring', 'pemantauan proyek', 'Candelion Digital', 'RAB', 'konstruksi', 'auditor'],
+    'Sistem Pemantauan Terpadu Progres Fisik, Akuntabilitas PIC, dan Pengawasan Audit Proyek Real-Time PT Candelion Digital.',
+  keywords: ['project monitoring', 'pemantauan proyek', 'Candelion Digital', 'konstruksi', 'auditor', 'Telocor Sidoarjo'],
   icons: {
     icon: [
       { url: '/logo/logo_candelion_white.png', type: 'image/png' },

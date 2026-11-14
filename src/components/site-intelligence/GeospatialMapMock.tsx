@@ -643,17 +643,17 @@ export default function GeospatialMapMock() {
                 </div>
               </div>
 
-              {/* Budget Allocation */}
+              {/* Target Duration */}
               <div>
                 <label className="block font-bold text-slate-700 mb-1">
-                  Alokasi Pos Pagu RAB (Rp):
+                  Target Durasi Pelaksanaan (Hari Kerja):
                 </label>
                 <input
                   type="number"
-                  value={polyBudget}
-                  onChange={(e) => setPolyBudget(Number(e.target.value))}
+                  defaultValue={30}
                   className="w-full p-2.5 rounded-xl border border-slate-200 font-mono font-bold text-slate-900"
-                  step="5000000"
+                  min="1"
+                  max="180"
                   required
                 />
               </div>

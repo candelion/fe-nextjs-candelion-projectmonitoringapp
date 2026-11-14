@@ -227,7 +227,7 @@ export default function CentralControllerAdminPanel() {
                 Pusat Kendali Operasional & Penugasan Personel 🏛️
               </h1>
               <p className="text-xs sm:text-sm text-indigo-100/90 mt-1 max-w-2xl leading-relaxed">
-                Otoritas tertinggi pengelolaan tugas PIC Lapangan, penugasan Auditor Head, pengawasan deviasi Kurva S, dan sinkronisasi real-time integrasi RAB Telocor Sidoarjo.
+                Otoritas tertinggi pengelolaan tugas PIC Lapangan, penugasan Auditor Head, pengawasan deviasi Kurva S, dan pemantauan menyeluruh terhadap progres proyek Telocor Sidoarjo.
               </p>
             </div>
           </div>
@@ -262,9 +262,9 @@ export default function CentralControllerAdminPanel() {
           </div>
 
           <div>
-            <span className="text-indigo-200/80 block text-[11px]">Total Pos RAB Diaudit</span>
-            <span className="text-lg font-black text-white">Rp 450.000.000</span>
-            <span className="text-[10px] text-indigo-200 font-bold block">42 Pos Anggaran Terdaftar</span>
+            <span className="text-indigo-200/80 block text-[11px]">Zona & Titik Pantau</span>
+            <span className="text-lg font-black text-white">4 Zona / 4 Titik</span>
+            <span className="text-[10px] text-indigo-200 font-bold block">Telocor Muara Porong</span>
           </div>
 
           <div>
@@ -600,14 +600,14 @@ export default function CentralControllerAdminPanel() {
 
               <div>
                 <label className="block font-bold text-slate-700 mb-1">
-                  Alokasi Pos Pagu RAB (Rp):
+                  Target Durasi Pelaksanaan (Hari Kerja):
                 </label>
                 <input
                   type="number"
-                  value={newPkgBudget}
-                  onChange={(e) => setNewPkgBudget(Number(e.target.value))}
+                  defaultValue={14}
                   className="w-full p-2.5 rounded-xl border border-slate-200 font-mono font-bold"
-                  step="5000000"
+                  min="1"
+                  max="120"
                   required
                 />
               </div>

@@ -52,12 +52,12 @@ export default function Header({ onMenuToggle }: HeaderProps) {
     if (pathname.includes('/laporan')) {
       return currentRole === 'auditor_head'
         ? 'Kertas Kerja Audit & Penerbitan LHE'
-        : 'Otomasi Pembuatan Laporan & RAB'
+        : 'Otomasi Rekapitulasi Laporan & Verifikasi'
     }
     // Main dashboard view
     if (currentRole === 'pic_lapangan') return 'Tugas Harian Lapangan'
     if (currentRole === 'auditor_head') return 'Audit Kepatuhan & Evaluasi To-Do PIC'
-    return 'Pusat Kendali Proyek & Integrasi RAB (Admin Pusat)'
+    return 'Pusat Kendali Proyek (Admin Pusat)'
   }
 
   // Filter notifications by role — PIC only sees site-level alerts
@@ -107,24 +107,24 @@ export default function Header({ onMenuToggle }: HeaderProps) {
       {/* Right: role-aware actions */}
       <div className="flex items-center gap-2 shrink-0">
 
-        {/* Project Controller: RAB Live Sync Badge */}
+        {/* Project Controller: Kendali Proyek Aktif Badge */}
         {currentRole === 'project_controller' && (
           <button
             onClick={triggerRabSync}
-            title="Klik untuk menyinkronkan data RAB terbaru"
-            className="group hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200/80 text-emerald-800 text-xs font-semibold transition cursor-pointer"
+            title="Klik untuk menyinkronkan status kendali proyek terbaru"
+            className="group hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 hover:bg-indigo-100/80 border border-indigo-200/80 text-indigo-800 text-xs font-semibold transition cursor-pointer"
           >
             <span className="relative flex h-2 w-2">
               <span
-                className={`animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 ${
+                className={`animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75 ${
                   rabSyncStatus === 'syncing' ? 'duration-200' : ''
                 }`}
               />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-600" />
             </span>
-            <span>RAB Live Sync</span>
+            <span>Kendali Proyek Aktif</span>
             <RefreshCw
-              className={`w-3.5 h-3.5 text-emerald-600 group-hover:rotate-180 transition-transform duration-500 ${
+              className={`w-3.5 h-3.5 text-indigo-600 group-hover:rotate-180 transition-transform duration-500 ${
                 rabSyncStatus === 'syncing' ? 'animate-spin' : ''
               }`}
             />

@@ -50,7 +50,7 @@ export default function DashboardMainPage() {
               <AlertTriangle className="w-4 h-4" />
             </div>
             <div>
-              <span className="font-bold text-amber-900 mr-2">Peringatan Dini Sistem:</span>
+              <span className="font-bold text-amber-900 mr-2">Instruksi & Setup Pengawasan:</span>
               <span className="text-amber-800">
                 {topAlert.title} — {topAlert.description}
               </span>
@@ -130,10 +130,10 @@ export default function DashboardMainPage() {
           </div>
           <div className="flex-1">
             <div className="text-xs font-bold text-slate-800 group-hover:text-teal-600 transition">
-              Otomasi Pembuatan Laporan
+              Otomasi Laporan Terpadu
             </div>
             <div className="text-[11px] text-slate-400 mt-0.5">
-              Ekstrak RAB & terbitkan PDF laporan audit
+              Kompilasi laporan PIC & verifikasi auditor ke format siap cetak
             </div>
           </div>
           <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-teal-600 group-hover:translate-x-1 transition" />

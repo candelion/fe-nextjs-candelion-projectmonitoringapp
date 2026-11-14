@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { DASHBOARD_SUMMARY } from '@/data/dummyData'
 import {
-  Wallet,
+  ClipboardList,
   TrendingUp,
   ShieldCheck,
   FileCheck2,
@@ -27,27 +27,27 @@ export default function SummaryCards() {
 
   const cards = [
     {
-      title: 'Total Pagu RAB',
-      value: DASHBOARD_SUMMARY.totalPaguRab,
-      subtitle: DASHBOARD_SUMMARY.posTerdaftar,
-      badge: '100% Terpetakan',
+      title: 'Paket Tugas & Pengawasan',
+      value: '4 Paket / 14 Sub-Tugas',
+      subtitle: '10 Selesai • 4 Dalam Progres',
+      badge: 'Kendali Aktif',
       badgeStyle: 'bg-indigo-50 text-indigo-700 border-indigo-200/80',
-      icon: Wallet,
+      icon: ClipboardList,
       iconColor: 'bg-indigo-50 text-indigo-600',
-      progress: 75,
-      progressLabel: 'Serapan Anggaran: 65.4%',
-      footerText: 'Sinkronisasi SAP & ERP Aktif',
+      progress: 71.4,
+      progressLabel: 'Tingkat Penyelesaian: 71.4%',
+      footerText: 'Disupervisi 3 PIC & 1 Auditor',
       detailInfo: {
-        title: 'Rincian Pagu Anggaran RAB Proyek',
-        metric: 'Rp 450.000.000 (Total Pagu)',
+        title: 'Distribusi Penugasan & Supervisi Lapangan',
+        metric: '14 Sub-Tugas (3 Zona Telocor)',
         details: [
-          'Zona A (Pondasi): Rp 145.000.000 (Terserap 98.2%)',
-          'Zona B (Kolom Lt.2): Rp 165.000.000 (Terserap 53.9%)',
-          'Zona C (MEP Lt.1): Rp 85.000.000 (Terserap 63.5%)',
-          'Zona D (Fasad): Rp 55.000.000 (Terserap 25.0%)',
+          'Zona A (Dermaga): 4 Sub-tugas (100% Selesai)',
+          'Zona B (Jetty K4): 5 Sub-tugas (3 Selesai, 2 Progres)',
+          'Zona C (Breakwater): 3 Sub-tugas (1 Menunggu Audit, 2 Selesai)',
+          'Zona D (Workshop): 2 Sub-tugas (100% Selesai)',
         ],
-        linkTo: '/dashboard/laporan',
-        linkLabel: 'Buka Ekstraksi RAB Lengkap',
+        linkTo: '/dashboard',
+        linkLabel: 'Kelola Penugasan PIC & Auditor',
       },
     },
     {

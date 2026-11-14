@@ -190,7 +190,7 @@ export default function ZoneGridCards({
                         zone.dokumenValid ? 'text-slate-700' : 'text-amber-600'
                       }`}
                     >
-                      Dokumen BAP & RAB
+                      Dokumen Checklist & BAP
                     </span>
                   </div>
 
@@ -218,7 +218,7 @@ export default function ZoneGridCards({
                   <strong className="text-slate-700 font-semibold">{zone.pic}</strong>
                 </span>
                 <span className="font-semibold text-indigo-600 shrink-0">
-                  Rp {(zone.budget / 1000000).toFixed(0)} Jt
+                  {zone.status === 'completed' ? '100% Selesai' : 'Aktif Pengerjaan'}
                 </span>
               </div>
             </div>
@@ -234,7 +234,7 @@ export default function ZoneGridCards({
             <div className="flex items-start justify-between border-b pb-3 border-slate-100">
               <div>
                 <span className="text-[11px] font-bold text-indigo-600 uppercase tracking-wider">
-                  {selectedZoneModal.code} • Pos Anggaran Konstruksi
+                  {selectedZoneModal.code} • Sektor Pelaksanaan & Pengawasan
                 </span>
                 <h3 className="text-lg font-black text-slate-900">
                   {selectedZoneModal.name}
@@ -298,7 +298,7 @@ export default function ZoneGridCards({
                 ) : (
                   <AlertCircle className="w-4 h-4 text-amber-500" />
                 )}
-                <span className="text-slate-700">Dokumen BAP Fisik & Pagu RAB</span>
+                <span className="text-slate-700">Dokumen BAP Fisik & Checklist SNI</span>
               </div>
               <div className="flex items-center gap-2">
                 {selectedZoneModal.signOffValid ? (

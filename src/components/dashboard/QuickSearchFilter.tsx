@@ -31,7 +31,7 @@ export default function QuickSearchFilter({
               Cari Kategori Pemantauan
             </h3>
             <p className="text-xs text-slate-400">
-              Temukan zona, pos anggaran RAB, atau dokumen verifikasi dengan cepat.
+              Temukan zona pengerjaan, titik pantau, atau dokumen verifikasi dengan cepat.
             </p>
           </div>
         </div>

@@ -17,6 +17,7 @@ import {
   Printer,
   Share2,
   ShieldCheck,
+  ClipboardList,
 } from 'lucide-react'
 
 export default function ReportActionPanel() {
@@ -35,7 +36,7 @@ export default function ReportActionPanel() {
       setSuccessToast(
         isAuditor
           ? 'Laporan Hasil Evaluasi (LHE) Audit & Kepatuhan Berhasil Diterbitkan (PDF)!'
-          : 'Dokumen Laporan Mingguan Terpadu (PDF) Berhasil Diterbitkan & Diunduh!'
+          : 'Dokumen Laporan Terpadu (Rekapitulasi PIC & Verifikasi Auditor) Berhasil Diterbitkan (PDF)!'
       )
       setTimeout(() => setSuccessToast(null), 4000)
     }, 1500)
@@ -48,7 +49,7 @@ export default function ReportActionPanel() {
       setSuccessToast(
         isAuditor
           ? 'Ekstraksi Kertas Kerja Audit (KKA) & Rekap To-Do PIC (.xlsx) Berhasil!'
-          : 'Ekstraksi Data Pos Pagu RAB (.xlsx) Berhasil Disinkronisasi!'
+          : 'Ekstraksi Rekapitulasi Progres & Checklist Fisik (.xlsx) Berhasil!'
       )
       setTimeout(() => setSuccessToast(null), 4000)
     }, 1200)
@@ -71,7 +72,7 @@ export default function ReportActionPanel() {
         </div>
       )}
 
-      {/* Main Reporting & Metrics Summary Card (Exact requirements from prompt) */}
+      {/* Main Reporting & Metrics Summary Card */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
           <div>
@@ -81,21 +82,21 @@ export default function ReportActionPanel() {
               }`}
             >
               {isAuditor ? <ShieldCheck className="w-3.5 h-3.5" /> : <Sparkles className="w-3.5 h-3.5" />}
-              <span>{isAuditor ? 'Kertas Kerja & Audit Engine' : 'Mesin Otomasi Dokumen Terpadu'}</span>
+              <span>{isAuditor ? 'Kertas Kerja & Audit Engine' : 'Mesin Kompilasi Dokumen Otomatis'}</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
               {isAuditor
                 ? 'Penerbitan LHE Audit & Kertas Kerja Akuntabilitas'
-                : 'Otomasi Pembuatan Laporan & Ekstraksi RAB'}
+                : 'Otomasi Rekapitulasi Laporan PIC & Verifikasi Auditor'}
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl">
               {isAuditor
                 ? 'Ekstraksi komprehensif seluruh evaluasi To-Do PIC, pengesahan opname fisik, dan rekapitulasi kepatuhan spesifikasi teknis Proyek Telocor Sidoarjo.'
-                : 'Kompilasi otomatis data opname fisik, dokumentasi foto geotagging, dan rincian pos anggaran langsung ke format standar audit.'}
+                : 'Kompilasi otomatis rekaman pekerjaan To-Do PIC lapangan, log foto geotagging bukti fisik, dan catatan verifikasi auditor ke dalam laporan terpadu siap cetak.'}
             </p>
           </div>
 
-          {/* Action Buttons: "Generate PDF" & "Ekstrak RAB" */}
+          {/* Action Buttons: "Generate PDF" & "Ekstrak Rekap XLSX" */}
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <button
               onClick={handleGeneratePdf}
@@ -114,7 +115,7 @@ export default function ReportActionPanel() {
               ) : (
                 <>
                   <FileText className="w-4 h-4" />
-                  <span>{isAuditor ? 'Generate LHE Audit (PDF)' : 'Generate PDF Laporan'}</span>
+                  <span>{isAuditor ? 'Generate LHE Audit (PDF)' : 'Generate PDF Laporan Terpadu'}</span>
                 </>
               )}
             </button>
@@ -132,46 +133,45 @@ export default function ReportActionPanel() {
               ) : (
                 <>
                   <FileSpreadsheet className="w-4 h-4" />
-                  <span>{isAuditor ? 'Ekstrak KKA To-Do (.xlsx)' : 'Ekstrak RAB (.xlsx)'}</span>
+                  <span>{isAuditor ? 'Ekstrak KKA To-Do (.xlsx)' : 'Ekstrak Rekap Progres (.xlsx)'}</span>
                 </>
               )}
             </button>
           </div>
         </div>
 
-        {/* 3 Metrics Cards (Exact values from prompt) */}
-        {/* "Total RAB Anggaran Rp 1.485.500.000", "142 Document Terbit", "Waktu Rekap Dihemat 38.5 Jam/Bln" */}
+        {/* 3 Metrics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6">
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-indigo-100/80 text-indigo-700 flex items-center justify-center shrink-0">
-              <FileSpreadsheet className="w-6 h-6" />
+              <ClipboardList className="w-6 h-6" />
             </div>
             <div>
               <div className="text-xs text-slate-500 font-semibold">
-                Total RAB Anggaran
+                Total Checklist To-Do PIC
               </div>
               <div className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
-                {REPORTING_METRICS.totalRabAnggaran}
+                14 Sub-Tugas
               </div>
               <div className="text-[11px] text-indigo-600 font-semibold mt-0.5">
-                42 Pos Pagu Terdaftar
+                10 Selesai • 4 Dalam Progres
               </div>
             </div>
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-emerald-100/80 text-emerald-700 flex items-center justify-center shrink-0">
-              <FileCheck className="w-6 h-6" />
+              <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
               <div className="text-xs text-slate-500 font-semibold">
-                Akumulasi Dokumen
+                Status Verifikasi Auditor
               </div>
               <div className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
-                {REPORTING_METRICS.dokumenTerbit}
+                100% BAP Disahkan
               </div>
               <div className="text-[11px] text-emerald-600 font-semibold mt-0.5">
-                100% Arsip Digital Terverifikasi
+                9 Valid SNI • 1 Catatan Toleransi
               </div>
             </div>
           </div>

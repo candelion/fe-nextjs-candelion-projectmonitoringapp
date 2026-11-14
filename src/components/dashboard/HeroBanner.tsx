@@ -32,12 +32,12 @@ export default function HeroBanner() {
             <h1 className="text-xl sm:text-2xl font-black tracking-tight text-white">
               {isAuditor
                 ? 'Pengawasan Independen & Audit Kepatuhan Lapangan'
-                : 'Sistem Pemantauan Terpadu & Integrasi RAB'}
+                : 'Sistem Pemantauan Terpadu & Pusat Kendali Proyek'}
             </h1>
             <p className="text-xs sm:text-sm text-indigo-100/90 mt-1 max-w-2xl leading-relaxed">
               {isAuditor
                 ? 'Verifikasi kepatuhan spesifikasi teknis, keabsahan foto geotagging, dan akuntabilitas sign-off mandor di setiap zona aktif.'
-                : 'Monitoring progres fisik proyek, kepatuhan audit lapangan, dan akuntabilitas pos anggaran RAB secara langsung.'}
+                : 'Monitoring progres fisik proyek, orkestrasi penugasan PIC lapangan, dan koordinasi audit kepatuhan mutu secara langsung.'}
             </p>
           </div>
         </div>

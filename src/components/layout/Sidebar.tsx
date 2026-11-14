@@ -87,7 +87,7 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
     // Default: project_controller
     return [
       {
-        name: 'Dashboard & RAB',
+        name: 'Pusat Kendali Proyek',
         href: '/dashboard',
         icon: LayoutDashboard,
         badge: 'Utama',
@@ -102,7 +102,7 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
         name: 'Dokumentasi Lapangan',
         href: '/dashboard/dokumentasi',
         icon: Camera,
-        badge: 'Foto',
+        badge: 'Pantau',
       },
       {
         name: 'Site Intelligence',
@@ -111,10 +111,10 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
         badge: 'Peta',
       },
       {
-        name: 'Otomasi Laporan & RAB',
+        name: 'Otomasi Laporan Proyek',
         href: '/dashboard/laporan',
         icon: FileSpreadsheet,
-        badge: 'RAB',
+        badge: 'Laporan',
       },
     ]
   }

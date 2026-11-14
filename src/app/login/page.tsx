@@ -76,7 +76,7 @@ export default function LoginPage() {
             Sistem Pemantauan Terpadu
           </h1>
           <p className="text-sm text-slate-500 mt-1">
-            Monitoring Progres Fisik, Akuntabilitas PIC, & Integrasi RAB
+            Monitoring Progres Fisik, Akuntabilitas PIC, & Pengawasan Audit Proyek
           </p>
         </div>
 

@@ -156,7 +156,7 @@ export interface InspectionDocument {
   code: string
   title: string
   zone: string
-  category: 'RAB' | 'Audit' | 'Opname Fisik' | 'Laporan Mingguan'
+  category: 'Audit' | 'Opname Fisik' | 'Laporan Mingguan' | 'BAP Teknis'
   dateIssued: string
   author: string
   fileSize: string

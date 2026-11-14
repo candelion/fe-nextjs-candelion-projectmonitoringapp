@@ -32,6 +32,8 @@ export default function FieldDocumentationPage() {
   const { currentRole, currentUser } = useRole()
   const { evidencePhotos, setSelectedMapPointId, auditPhoto, auditSubTask, taskPackages } = useTaskData()
   const isAuditor = currentRole === 'auditor_head'
+  const isController = currentRole === 'project_controller'
+  const isPic = currentRole === 'pic_lapangan'
 
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedPointFilter, setSelectedPointFilter] = useState('ALL')
@@ -75,6 +77,28 @@ export default function FieldDocumentationPage() {
   const pendingPhotos = evidencePhotos.filter((p) => !p.auditStatus || p.auditStatus === 'pending').length
   const flaggedPhotos = evidencePhotos.filter((p) => p.auditStatus === 'flagged').length
 
+  const getHeaderBadge = () => {
+    if (isAuditor) return 'Auditor Head • Forensik & Verifikasi Bukti Foto PIC'
+    if (isController) return 'Project Controller • Pemantauan & Komparasi Visual Proyek'
+    return 'PIC Lapangan • Pengambilan Foto Geotagging & Bukti Fisik'
+  }
+
+  const getHeaderTitle = () => {
+    if (isAuditor) return 'Audit Keabsahan & Forensik Bukti Foto To-Do PIC'
+    if (isController) return 'Pemantauan Visual & Komparasi Dokumentasi Lapangan'
+    return 'Kamera Geotagging & Log Gambar Laporan'
+  }
+
+  const getHeaderSubtitle = () => {
+    if (isAuditor) {
+      return 'Pemeriksaan integritas metadata GPS RTK, radius perimeter Telocor Sidoarjo, dan verifikasi visual kesesuaian fisik terhadap To-Do yang dikerjakan oleh PIC Hendra Wijaya.'
+    }
+    if (isController) {
+      return 'Monitoring seluruh arsip rekaman visual hasil pelaksanaan PIC di lapangan, komparasi progres Before-After, serta pengawasan catatan hasil audit (Mode Pengawas Eksekutif: Kamera hanya aktif untuk PIC).'
+    }
+    return 'Ambil bukti foto terverifikasi GPS, tautkan ke sub-tugas To-Do, dan arsipkan ke log gambar laporan proyek.'
+  }
+
   return (
     <div className="space-y-6">
       {/* Toast Alert */}
@@ -91,33 +115,43 @@ export default function FieldDocumentationPage() {
           <div className="flex items-center gap-2">
             <span
               className={`p-1.5 rounded-lg ${
-                isAuditor ? 'bg-teal-50 text-teal-700' : 'bg-emerald-50 text-emerald-600'
+                isAuditor
+                  ? 'bg-teal-50 text-teal-700'
+                  : isController
+                  ? 'bg-indigo-50 text-indigo-700'
+                  : 'bg-emerald-50 text-emerald-600'
               }`}
             >
-              {isAuditor ? <ShieldCheck className="w-4 h-4" /> : <Camera className="w-4 h-4" />}
+              {isAuditor ? (
+                <ShieldCheck className="w-4 h-4" />
+              ) : isController ? (
+                <Eye className="w-4 h-4" />
+              ) : (
+                <Camera className="w-4 h-4" />
+              )}
             </span>
             <span
               className={`text-xs font-bold uppercase tracking-wider ${
-                isAuditor ? 'text-teal-700' : 'text-emerald-600'
+                isAuditor
+                  ? 'text-teal-700'
+                  : isController
+                  ? 'text-indigo-700'
+                  : 'text-emerald-600'
               }`}
             >
-              {isAuditor ? 'Auditor Head • Forensik & Verifikasi Bukti Foto PIC' : 'Modul Dokumentasi Lapangan'}
+              {getHeaderBadge()}
             </span>
           </div>
           <h1 className="text-2xl font-black text-slate-900 tracking-tight mt-1">
-            {isAuditor
-              ? 'Audit Keabsahan & Forensik Bukti Foto To-Do PIC'
-              : 'Kamera Geotagging & Log Gambar Laporan'}
+            {getHeaderTitle()}
           </h1>
-          <p className="text-xs text-slate-500 mt-0.5">
-            {isAuditor
-              ? 'Pemeriksaan integritas metadata GPS RTK, radius perimeter Telocor Sidoarjo, dan verifikasi visual kesesuaian fisik terhadap To-Do yang dikerjakan oleh PIC Hendra Wijaya.'
-              : 'Ambil bukti foto terverifikasi GPS, tautkan ke sub-tugas To-Do, dan arsipkan ke log gambar laporan proyek.'}
+          <p className="text-xs text-slate-500 mt-0.5 max-w-3xl leading-relaxed">
+            {getHeaderSubtitle()}
           </p>
         </div>
       </div>
 
-      {/* Top Section: For Auditor Head vs For PIC/Controller */}
+      {/* Top Section: Role-Aware Split */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {isAuditor ? (
           // ── AUDITOR FORENSIC REVIEW PANEL ─────────────────────────────────
@@ -185,7 +219,70 @@ export default function FieldDocumentationPage() {
               )}
             </div>
           </div>
+        ) : isController ? (
+          // ── PROJECT CONTROLLER EXECUTIVE MONITORING PANEL (READ ONLY, NO CAMERA) ──
+          <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs flex flex-col justify-between space-y-4">
+            <div>
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-bold text-indigo-700 uppercase tracking-wider bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-200">
+                  Panel Pemantauan Eksekutif • Read-Only
+                </span>
+                <span className="text-xs text-slate-400 font-mono">
+                  Sesi: 14 Nov 2026
+                </span>
+              </div>
+              <h3 className="text-base font-extrabold text-slate-900 mt-2 flex items-center gap-2">
+                <Eye className="w-5 h-5 text-indigo-600" />
+                Pengawasan Visual Dokumentasi Pelaksanaan PIC
+              </h3>
+              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                Sebagai <strong>Project Controller</strong>, Anda memiliki hak akses penuh untuk <em>memantau, menginspeksi, dan membandingkan</em> progres fisik tapak proyek Telocor Sidoarjo. Pengambilan foto lapangan hanya dilakukan oleh PIC Lapangan dengan verifikasi GPS RTK.
+              </p>
+            </div>
+
+            {/* 4 Stat Boxes */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+              <div className="p-3 rounded-2xl bg-slate-50 border border-slate-100 text-center">
+                <span className="text-[10px] text-slate-400 block font-semibold">Total Foto</span>
+                <span className="text-lg font-black text-slate-900">{totalPhotos}</span>
+                <span className="text-[9px] text-slate-500 block">Unggahan PIC</span>
+              </div>
+              <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-100 text-center">
+                <span className="text-[10px] text-emerald-700 block font-semibold">Valid Auditor</span>
+                <span className="text-lg font-black text-emerald-800">{verifiedPhotos}</span>
+                <span className="text-[9px] text-emerald-600 block">Lolos BAP</span>
+              </div>
+              <div className="p-3 rounded-2xl bg-amber-50 border border-amber-100 text-center">
+                <span className="text-[10px] text-amber-700 block font-semibold">Menunggu Audit</span>
+                <span className="text-lg font-black text-amber-800">{pendingPhotos}</span>
+                <span className="text-[9px] text-amber-600 block">Antrean Audit</span>
+              </div>
+              <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-100 text-center">
+                <span className="text-[10px] text-indigo-700 block font-semibold">Titik Pantau</span>
+                <span className="text-lg font-black text-indigo-800">4 Titik</span>
+                <span className="text-[9px] text-indigo-600 block">Telocor</span>
+              </div>
+            </div>
+
+            {/* Executive Badge Notification */}
+            <div className="p-3 rounded-2xl bg-slate-900 text-white flex items-center justify-between text-xs">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+                <span className="text-[11px] text-slate-200 font-medium">
+                  Gunakan slider di sebelah kanan untuk membandingkan tapak awal vs progres terkini.
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedPointFilter('ALL')}
+                className="px-2.5 py-1 rounded-xl bg-white/15 hover:bg-white/25 text-white text-[10px] font-bold transition cursor-pointer"
+              >
+                Reset Filter
+              </button>
+            </div>
+          </div>
         ) : (
+          // ── PIC LAPANGAN ACTIVE CAMERA VIEWFINDER ──────────────────────────
           <div>
             <CameraViewfinder onPhotoSaved={handlePhotoSaved} />
           </div>
