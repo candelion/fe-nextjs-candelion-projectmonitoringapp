@@ -224,11 +224,8 @@ export default function CentralControllerAdminPanel() {
                 </span>
               </div>
               <h1 className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-white">
-                Pusat Kendali Operasional & Penugasan Personel 🏛️
+                Pusat Kendali Operasional Proyek
               </h1>
-              <p className="text-xs sm:text-sm text-indigo-100/90 mt-1 max-w-2xl leading-relaxed">
-                Otoritas tertinggi pengelolaan tugas PIC Lapangan, penugasan Auditor Head, pengawasan deviasi Kurva S, dan pemantauan menyeluruh terhadap progres proyek Telocor Sidoarjo.
-              </p>
             </div>
           </div>
 
@@ -294,11 +291,8 @@ export default function CentralControllerAdminPanel() {
               </span>
             </div>
             <h3 className="text-lg font-black text-slate-900 tracking-tight mt-0.5">
-              Matriks Penugasan Tugas: PIC Lapangan ⇄ Auditor Head
+              Matriks Penugasan PIC & Auditor
             </h3>
-            <p className="text-xs text-slate-500 mt-0.5">
-              Sebagai Admin Pusat, Anda dapat mengatur siapa PIC yang mengerjakan tugas lapangan dan siapa Auditor yang bertugas mengesahkan bukti fisiknya.
-            </p>
           </div>
 
           <button
@@ -446,11 +440,8 @@ export default function CentralControllerAdminPanel() {
             </div>
             <div>
               <h4 className="font-extrabold text-sm text-slate-900">
-                Log Komando & Aktivitas Proyek Terpadu (Live Progress Feed)
+                Log Aktivitas Proyek Terpadu (Live Feed)
               </h4>
-              <p className="text-xs text-slate-400">
-                Pemantauan real-time aksi penyelesaian to-do oleh PIC dan evaluasi pengesahan oleh Auditor di lapangan.
-              </p>
             </div>
           </div>
           <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">

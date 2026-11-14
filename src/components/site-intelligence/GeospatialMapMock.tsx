@@ -256,16 +256,9 @@ export default function GeospatialMapMock() {
             <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
               <Compass className="w-4 h-4 text-emerald-600" />
               {isAuditor
-                ? 'Audit Geospasial: Verifikasi Koordinat GPS & Bukti To-Do PIC per Titik'
-                : 'Site Intelligence: Pemetaan Tugas & Poligon Zona Telocor Sidoarjo'}
+                ? 'Audit Geospasial Telocor'
+                : 'Peta Spasial & Titik Pantau Telocor'}
             </h3>
-            <p className="text-xs text-slate-500 mt-0.5">
-              {isController
-                ? 'Sebagai Project Controller, Anda dapat membuat kotak poligon zona baru, menugaskan PIC & Auditor, serta mengelola daftar To-Do berdasarkan lokasi.'
-                : isAuditor
-                ? 'Klik pin koordinat Telocor untuk mengevaluasi keabsahan bukti foto dan To-Do yang dikerjakan oleh PIC Hendra Wijaya.'
-                : 'Klik titik koordinat atau poligon zona pada peta Telocor untuk melihat rincian sub-tugas dan foto bukti yang telah diunggah.'}
-            </p>
           </div>
 
           {/* Controller Actions: Create Polygon & Layer Selector */}

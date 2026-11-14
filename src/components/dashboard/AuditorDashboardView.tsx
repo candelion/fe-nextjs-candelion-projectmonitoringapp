@@ -185,12 +185,9 @@ export default function AuditorDashboardView() {
                   <Clock className="w-3.5 h-3.5" /> Sesi Audit: 14 Nov 2026
                 </span>
               </div>
-              <h1 className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-white">
-                Penilaian & Verifikasi Akuntabilitas To-Do PIC 🛡️
+              <h1 className="text-xl sm:text-2xl font-black tracking-tight text-white">
+                Audit & Evaluasi To-Do PIC
               </h1>
-              <p className="text-xs sm:text-sm text-teal-100 mt-1 max-w-2xl leading-relaxed">
-                Evaluasi independen terhadap seluruh checklist, foto geotagging, dan BAP fisik yang diserahkan oleh PIC Lapangan (Hendra Wijaya, S.T.) di Proyek Telocor Sidoarjo.
-              </p>
             </div>
           </div>
 
@@ -325,7 +322,7 @@ export default function AuditorDashboardView() {
                 <span className="text-xs text-slate-300">PIC: Hendra Wijaya, S.T. ⇄ Auditor Head</span>
               </div>
               <h3 className="text-sm sm:text-base font-black text-white mt-0.5">
-                Matriks Relevansi: To-Do yang Dikerjakan PIC vs Objek yang Diaudit
+                Matriks Relevansi To-Do PIC & Objek Audit
               </h3>
             </div>
           </div>
@@ -430,11 +427,8 @@ export default function AuditorDashboardView() {
             </div>
             <div>
               <h3 className="text-sm font-bold text-slate-800">
-                Pencarian Kertas Kerja & Bukti To-Do PIC
+                Pencarian Bukti To-Do PIC
               </h3>
-              <p className="text-xs text-slate-400">
-                Cari berdasarkan nama sub-tugas, titik koordinat Telocor (P-01), kode paket, atau nomor laporan BAP.
-              </p>
             </div>
           </div>
 

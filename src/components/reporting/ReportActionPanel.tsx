@@ -86,14 +86,9 @@ export default function ReportActionPanel() {
             </div>
             <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
               {isAuditor
-                ? 'Penerbitan LHE Audit & Kertas Kerja Akuntabilitas'
-                : 'Otomasi Rekapitulasi Laporan PIC & Verifikasi Auditor'}
+                ? 'Penerbitan LHE Audit & Kertas Kerja'
+                : 'Rekapitulasi Laporan PIC & Verifikasi Auditor'}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl">
-              {isAuditor
-                ? 'Ekstraksi komprehensif seluruh evaluasi To-Do PIC, pengesahan opname fisik, dan rekapitulasi kepatuhan spesifikasi teknis Proyek Telocor Sidoarjo.'
-                : 'Kompilasi otomatis rekaman pekerjaan To-Do PIC lapangan, log foto geotagging bukti fisik, dan catatan verifikasi auditor ke dalam laporan terpadu siap cetak.'}
-            </p>
           </div>
 
           {/* Action Buttons: "Generate PDF" & "Ekstrak Rekap XLSX" */}

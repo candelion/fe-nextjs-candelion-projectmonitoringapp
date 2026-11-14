@@ -89,16 +89,6 @@ export default function FieldDocumentationPage() {
     return 'Kamera Geotagging & Log Gambar Laporan'
   }
 
-  const getHeaderSubtitle = () => {
-    if (isAuditor) {
-      return 'Pemeriksaan integritas metadata GPS RTK, radius perimeter Telocor Sidoarjo, dan verifikasi visual kesesuaian fisik terhadap To-Do yang dikerjakan oleh PIC Hendra Wijaya.'
-    }
-    if (isController) {
-      return 'Monitoring seluruh arsip rekaman visual hasil pelaksanaan PIC di lapangan, komparasi progres Before-After, serta pengawasan catatan hasil audit (Mode Pengawas Eksekutif: Kamera hanya aktif untuk PIC).'
-    }
-    return 'Ambil bukti foto terverifikasi GPS, tautkan ke sub-tugas To-Do, dan arsipkan ke log gambar laporan proyek.'
-  }
-
   return (
     <div className="space-y-6">
       {/* Toast Alert */}
@@ -145,9 +135,6 @@ export default function FieldDocumentationPage() {
           <h1 className="text-2xl font-black text-slate-900 tracking-tight mt-1">
             {getHeaderTitle()}
           </h1>
-          <p className="text-xs text-slate-500 mt-0.5 max-w-3xl leading-relaxed">
-            {getHeaderSubtitle()}
-          </p>
         </div>
       </div>
 
@@ -167,11 +154,8 @@ export default function FieldDocumentationPage() {
               </div>
               <h3 className="text-base font-extrabold text-slate-900 mt-2 flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-teal-700" />
-                Rekapitulasi Bukti Foto To-Do Hendra Wijaya (PIC)
+                Rekapitulasi Bukti Foto To-Do PIC
               </h3>
-              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                Setiap foto yang diunggah oleh PIC saat menyelesaikan To-Do harian akan diverifikasi keaslian geotaggingnya di Telocor Sidoarjo sebelum disahkan ke Laporan Hasil Evaluasi (LHE).
-              </p>
             </div>
 
             {/* 4 Stat Boxes */}
@@ -235,9 +219,6 @@ export default function FieldDocumentationPage() {
                 <Eye className="w-5 h-5 text-indigo-600" />
                 Pengawasan Visual Dokumentasi Pelaksanaan PIC
               </h3>
-              <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                Sebagai <strong>Project Controller</strong>, Anda memiliki hak akses penuh untuk <em>memantau, menginspeksi, dan membandingkan</em> progres fisik tapak proyek Telocor Sidoarjo. Pengambilan foto lapangan hanya dilakukan oleh PIC Lapangan dengan verifikasi GPS RTK.
-              </p>
             </div>
 
             {/* 4 Stat Boxes */}
@@ -306,14 +287,9 @@ export default function FieldDocumentationPage() {
             <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
               <FileText className="w-5 h-5 text-emerald-600" />
               {isAuditor
-                ? 'Arsip Bukti Foto PIC yang Perlu & Telah Diaudit'
-                : 'Log Gambar Dokumentasi & Laporan (Foto A, B, C...)'}
+                ? 'Arsip Bukti Foto PIC'
+                : 'Log Gambar Dokumentasi & Laporan'}
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
-              {isAuditor
-                ? 'Daftar seluruh foto yang diunggah oleh PIC Hendra Wijaya beserta kaitan langsung dengan To-Do pengerjaannya.'
-                : 'Daftar seluruh foto bukti lapangan yang terhubung ke sub-tugas To-Do dan titik koordinat peta.'}
-            </p>
           </div>
 
           <div className="flex items-center gap-2">

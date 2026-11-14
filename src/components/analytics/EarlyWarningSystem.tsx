@@ -76,9 +76,6 @@ export default function EarlyWarningSystem() {
               Sistem Peringatan Dini Proyek
             </h3>
           </div>
-          <p className="text-xs text-slate-400 mt-1">
-            Deteksi otomatis anomali jadwal, pasokan logistik, dan deviasi mutu lapangan
-          </p>
         </div>
 
         {/* Severity Filter Tabs */}

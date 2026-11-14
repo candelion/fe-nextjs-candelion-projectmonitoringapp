@@ -16,9 +16,6 @@ export default function CircularProgressChart() {
             <h3 className="text-sm font-bold text-slate-900">
               Capaian Progres Kumulatif
             </h3>
-            <p className="text-xs text-slate-400">
-              Konsolidasi seluruh bobot pekerjaan zona
-            </p>
           </div>
           <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
             On Schedule

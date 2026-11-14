@@ -28,11 +28,8 @@ export default function QuickSearchFilter({
           </div>
           <div>
             <h3 className="text-sm font-bold text-slate-800">
-              Cari Kategori Pemantauan
+              Pencarian Zona & Titik Pantau
             </h3>
-            <p className="text-xs text-slate-400">
-              Temukan zona pengerjaan, titik pantau, atau dokumen verifikasi dengan cepat.
-            </p>
           </div>
         </div>
 

@@ -88,14 +88,9 @@ export default function AnalyticsDashboardPage() {
           </div>
           <h1 className="text-2xl font-black text-slate-900 tracking-tight mt-1">
             {isAuditor
-              ? 'Evaluasi Kurva S, Deviasi & Kepatuhan Proyek'
-              : 'Dasbor Pemantauan Progres Real-Time (PIC & Audit)'}
+              ? 'Evaluasi Deviasi & Kurva S'
+              : 'Analitik Progres Real-Time'}
           </h1>
-          <p className="text-xs text-slate-500 mt-0.5">
-            {isAuditor
-              ? 'Analisis independen terhadap deviasi kurva S, uji sampling opname fisik PIC, dan evaluasi hasil checklist To-Do di lapangan.'
-              : 'Pemantauan real-time integrasi antara kecepatan eksekusi sub-tugas PIC Lapangan dan validasi kepatuhan oleh Auditor Head.'}
-          </p>
         </div>
       </div>
 
@@ -135,11 +130,8 @@ export default function AnalyticsDashboardPage() {
             </div>
             <div>
               <h3 className="font-extrabold text-sm text-slate-900">
-                Sinkronisasi Pemantauan Real-Time: Peran PIC vs Auditor
+                Sinkronisasi Pemantauan Real-Time
               </h3>
-              <p className="text-xs text-slate-500">
-                Progres fisik aktual dihitung dari penyelesaian tugas PIC dan validasi berita acara oleh Auditor
-              </p>
             </div>
           </div>
           <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 w-fit">

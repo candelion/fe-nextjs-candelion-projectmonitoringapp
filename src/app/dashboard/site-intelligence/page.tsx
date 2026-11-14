@@ -34,14 +34,9 @@ export default function SiteIntelligencePage() {
           </div>
           <h1 className="text-2xl font-black text-slate-900 tracking-tight mt-1">
             {isAuditor
-              ? 'Audit Geospasial: Verifikasi To-Do PIC per Titik Telocor'
-              : 'Site Intelligence: Pemetaan Tugas & Bukti per Titik'}
+              ? 'Audit Geospasial Telocor'
+              : 'Site Intelligence & Pemetaan'}
           </h1>
-          <p className="text-xs text-slate-500 mt-0.5">
-            {isAuditor
-              ? 'Pemeriksaan keabsahan koordinat GPS, verifikasi foto bukti lapangan, dan evaluasi kepatuhan To-Do yang dikerjakan oleh PIC (Hendra Wijaya, S.T.) di Telocor Sidoarjo.'
-              : 'Integrasi spasial real-time, monitoring status pekerjaan per titik koordinat, dan arsip foto bukti yang diunggah di setiap lokasi.'}
-          </p>
         </div>
       </div>
 

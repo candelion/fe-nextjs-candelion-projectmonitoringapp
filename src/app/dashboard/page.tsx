@@ -97,7 +97,7 @@ export default function DashboardMainPage() {
               Dokumentasi Lapangan
             </div>
             <div className="text-[11px] text-slate-400 mt-0.5">
-              Verifikasi foto geotagging & slider before-after
+              Verifikasi foto & perbandingan fisik
             </div>
           </div>
           <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-indigo-600 group-hover:translate-x-1 transition" />
@@ -115,7 +115,7 @@ export default function DashboardMainPage() {
               Site Intelligence & Peta
             </div>
             <div className="text-[11px] text-slate-400 mt-0.5">
-              Visual peta interaktif, kotak poligon & pin status zona
+              Pemetaan lokasi & poligon zona
             </div>
           </div>
           <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-emerald-600 group-hover:translate-x-1 transition" />
@@ -133,7 +133,7 @@ export default function DashboardMainPage() {
               Otomasi Laporan Terpadu
             </div>
             <div className="text-[11px] text-slate-400 mt-0.5">
-              Kompilasi laporan PIC & verifikasi auditor ke format siap cetak
+              Ekspor PDF & ringkasan hasil audit
             </div>
           </div>
           <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-teal-600 group-hover:translate-x-1 transition" />

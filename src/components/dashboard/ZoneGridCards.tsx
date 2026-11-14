@@ -83,11 +83,8 @@ export default function ZoneGridCards({
       <div className="flex items-center justify-between mb-4">
         <div>
           <h2 className="text-base font-extrabold text-slate-900 tracking-tight">
-            Pemantauan Progres per Pos & Zona
+            Pemantauan Progres per Zona
           </h2>
-          <p className="text-xs text-slate-500">
-            Klik kartu zona untuk melihat rincian BAP opname, pengawasan fisik, dan audit trail.
-          </p>
         </div>
         <Link
           href="/dashboard/site-intelligence"

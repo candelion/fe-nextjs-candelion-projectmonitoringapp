@@ -52,14 +52,9 @@ export default function ReportingDashboardPage() {
           </div>
           <h1 className="text-2xl font-black text-slate-900 tracking-tight mt-1">
             {isAuditor
-              ? 'Kertas Kerja Audit, Berita Acara (BAP) & LHE'
-              : 'Otomasi Rekapitulasi Laporan PIC & Verifikasi Auditor'}
+              ? 'Kertas Kerja Audit & LHE'
+              : 'Otomatisasi Laporan & Verifikasi'}
           </h1>
-          <p className="text-xs text-slate-500 mt-0.5">
-            {isAuditor
-              ? 'Ekstraksi komprehensif audit trail to-do PIC, pengesahan opname fisik, dan Laporan Hasil Evaluasi (LHE) kepatuhan Proyek Telocor Sidoarjo.'
-              : 'Kompilasi otomatis rekaman pekerjaan To-Do PIC Lapangan, log bukti foto geotagging, dan catatan pengesahan Auditor Head ke dalam format laporan siap cetak & spreadsheet.'}
-          </p>
         </div>
       </div>
 

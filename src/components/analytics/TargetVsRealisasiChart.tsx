@@ -44,9 +44,6 @@ export default function TargetVsRealisasiChart() {
               Perbandingan Target Rencana vs Realisasi Fisik
             </h3>
           </div>
-          <p className="text-xs text-slate-400 mt-1">
-            Evaluasi mingguan kurva S kumulatif (Minggu 1 s/d Minggu 8)
-          </p>
         </div>
 
         <div className="flex items-center gap-4 text-xs font-semibold">

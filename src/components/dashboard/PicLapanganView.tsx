@@ -144,12 +144,9 @@ export default function PicLapanganView() {
                   <Clock className="w-3.5 h-3.5" /> Hari ini, 14 Nov 2026
                 </span>
               </div>
-              <h1 className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-white">
-                Daftar Paket Pekerjaan & Sub-Tugas Lapangan 👷
+              <h1 className="text-xl sm:text-2xl font-black tracking-tight text-white">
+                Tugas Harian Lapangan
               </h1>
-              <p className="text-xs sm:text-sm text-emerald-100 mt-1 max-w-2xl leading-relaxed">
-                Pilih kategori paket pekerjaan untuk melihat rincian tahapan sub-tugas, titik koordinat peta, dan status verifikasi bukti fisik.
-              </p>
             </div>
           </div>
 
@@ -194,11 +191,8 @@ export default function PicLapanganView() {
             </div>
             <div>
               <h3 className="text-sm font-bold text-slate-800">
-                Cari Kategori & Sub-Tugas Lapangan
+                Pencarian Tugas Lapangan
               </h3>
-              <p className="text-xs text-slate-400">
-                Temukan tahapan pekerjaan, nomor titik koordinat, atau nama checklist.
-              </p>
             </div>
           </div>
 
@@ -258,7 +252,7 @@ export default function PicLapanganView() {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-base font-extrabold text-slate-900 tracking-tight">
-            Paket Pekerjaan Utama Zona B (Klik untuk Buka Sub-Tugas)
+            Paket Pekerjaan (Zona B)
           </h2>
           <span className="text-xs text-slate-400">
             {filteredPackages.length} Paket Terdaftar
